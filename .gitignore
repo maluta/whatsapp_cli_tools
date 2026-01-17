@@ -1,0 +1,22 @@
+# Chaves de API e secrets
+.env
+.env.local
+.env.*
+
+# Cache do summarize
+.cache/
+
+# Arquivos de conversa do WhatsApp (privacidade)
+*.zip
+
+# Resultados intermediários
+semanas/
+resumos/
+
+# Testes
+teste_*.md
+
+# Python
+__pycache__/
+*.pyc
+.venv/
