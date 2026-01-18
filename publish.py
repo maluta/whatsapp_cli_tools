@@ -58,23 +58,14 @@ body {{
   background-size: 20px 20px;
 }}
 .migration-banner {{
-  background: var(--text-primary);
-  color: var(--bg-secondary);
+  background: #F9DC03;
+  color: #000000;
   padding: 0.75rem 1.5rem;
   text-align: center;
   font-family: var(--font-mono);
   font-size: 0.875rem;
 }}
-.migration-banner a {{ color: var(--accent-yellow); text-decoration: underline; }}
-.migration-banner .close-banner {{
-  background: none;
-  border: none;
-  color: var(--bg-secondary);
-  cursor: pointer;
-  margin-left: 1rem;
-  font-size: 1.25rem;
-  vertical-align: middle;
-}}
+.migration-banner a {{ color: #000000; font-weight: 700; text-decoration: underline; }}
 .header {{
   position: sticky;
   top: 0;
@@ -209,10 +200,25 @@ body {{
   transition: all 0.15s ease;
   display: flex;
   flex-direction: column;
+  position: relative;
 }}
 .post-card:hover {{
   transform: translateY(-2px);
   box-shadow: 4px 4px 0 var(--border-color);
+}}
+.badge-new {{
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #ef4444;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.25rem 0.5rem;
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
 }}
 .post-card-header {{
   display: flex;
@@ -275,12 +281,24 @@ body {{
   flex: 1;
 }}
 .post-card-footer {{
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border-light);
+  margin-top: 0;
+  padding-top: 0;
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--accent-blue);
+}}
+.post-card-stats {{
+  display: flex;
+  gap: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 0.75rem;
+}}
+.post-card-divider {{
+  border: none;
+  border-top: 1px solid var(--border-light);
+  margin: 0.75rem 0;
 }}
 .back-link {{
   display: inline-block;
@@ -340,108 +358,58 @@ body {{
 .content a {{ color: var(--accent-blue); text-decoration: none; border-bottom: 1px solid transparent; }}
 .content a:hover {{ border-bottom-color: var(--accent-blue); }}
 .content strong {{ font-weight: 700; }}
-/* Links page */
-.links-section {{ margin-bottom: 3rem; }}
-.links-section-title {{
-  font-family: var(--font-mono);
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--border-color);
-}}
-.links-grid {{
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1rem;
-}}
-.links-grid.hidden {{ display: none; }}
-.link-item {{
+/* Links page - Hacker News style */
+.links-list {{
   background: var(--bg-secondary);
   border: 2px solid var(--border-color);
-  padding: 1rem;
+  padding: 0;
+}}
+.link-item {{
   display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  color: var(--text-primary);
-  transition: all 0.15s;
+  align-items: baseline;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--border-light);
+  gap: 0.5rem;
 }}
-.link-item:hover {{
-  transform: translateY(-2px);
-  box-shadow: 4px 4px 0 var(--border-color);
-}}
+.link-item:last-child {{ border-bottom: none; }}
 .link-item.hidden {{ display: none; }}
-.link-header {{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.75rem;
-}}
-.link-domain {{
+.link-item:hover {{ background: rgba(0,0,0,0.02); }}
+.link-rank {{
   font-family: var(--font-mono);
-  font-size: 0.625rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--accent-blue);
-  background: rgba(37, 99, 235, 0.1);
-  padding: 0.25rem 0.5rem;
-}}
-.link-action {{
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  padding: 0.25rem 0.5rem;
-  background: transparent;
-  border: 1px solid var(--border-light);
+  font-size: 0.875rem;
   color: var(--text-secondary);
-  cursor: pointer;
-  transition: all 0.15s;
+  min-width: 2.5rem;
+  text-align: right;
 }}
-.link-action:hover {{
-  border-color: #25D366;
-  color: #25D366;
-}}
+.link-content {{ flex: 1; min-width: 0; }}
 .link-title {{
-  font-weight: 700;
   font-size: 0.95rem;
-  margin-bottom: 0.75rem;
   color: var(--text-primary);
-  line-height: 1.3;
-  flex: 1;
   text-decoration: none;
   word-break: break-word;
-  overflow-wrap: break-word;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }}
-.link-title:hover {{
-  color: var(--accent-blue);
-}}
-.link-qr {{
-  width: 80px;
-  height: 80px;
-  background: var(--bg-primary);
-  border: 1px dashed var(--border-light);
-  margin: 0 auto 0.75rem auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.link-title:hover {{ text-decoration: underline; }}
+.link-title:visited {{ color: #828282; }}
+.link-meta {{
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 0.125rem;
+}}
+.link-meta a {{
+  color: var(--text-secondary);
+  text-decoration: none;
+}}
+.link-meta a:hover {{ text-decoration: underline; }}
+.link-domain {{
   color: var(--text-secondary);
 }}
-.link-footer {{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 0.75rem;
-  border-top: 1px solid var(--border-light);
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
+.link-share {{
   color: var(--text-secondary);
+  cursor: pointer;
+  margin-left: 0.5rem;
 }}
+.link-share:hover {{ color: #25D366; }}
 .links-count {{
   font-family: var(--font-mono);
   font-size: 0.875rem;
@@ -465,13 +433,12 @@ body {{
   .nav {{ flex-wrap: wrap; justify-content: center; }}
 }}
   </style>
+  <script defer data-domain="maluta.github.io" src="https://plausible.io/js/plausible.js"></script>
 </head>
 <body>
-  <div class="migration-banner" id="migrationBanner">
-    Novo site! Migramos do Google Sites para cá.
-    <button class="close-banner" onclick="document.getElementById('migrationBanner').style.display='none';localStorage.setItem('bannerClosed','1');">×</button>
+  <div class="migration-banner">
+    <a href="https://sites.google.com/view/aprendizados-ia-educacao/home" target="_blank">Para o histórico anterior a Agosto de 2025, clique aqui</a>
   </div>
-  <script>if(localStorage.getItem('bannerClosed')==='1')document.getElementById('migrationBanner').style.display='none';</script>
   <header class="header">
     <div class="header-content">
       <a href="{base_url}index.html" class="logo">
@@ -489,7 +456,8 @@ body {{
   </main>
   <footer class="footer">
     Aprendizados_IA+Educação // Resumos gerados com LLM // {year}<br>
-    <span style="opacity: 0.7;">Feito por Marina e Tiago Maluta</span>
+    <span style="opacity: 0.7;">Feito por Marina e Tiago Maluta</span><br>
+    <a href="https://wa.me/5511982151851?text=Oi%2C%20encontrei%20um%20problema%20no%20site" style="opacity: 0.7; color: inherit;">Encontrou um problema? Avise-nos</a>
   </footer>
   {scripts}
 </body>
@@ -605,10 +573,15 @@ SEARCH_SCRIPT_INDEX = """
     let html = '';
     results.slice(0, 20).forEach(item => {{
       const snippet = createSnippet(item.content, query);
+      // Calcula delta de dias
+      const endParts = item.week.split(' → ')[1].split('/');
+      const endDate = new Date(`${{endParts[2]}}-${{endParts[1]}}-${{endParts[0]}}`);
+      const diffDays = Math.floor((new Date() - endDate) / (1000*60*60*24));
+      const delta = diffDays >= 0 ? ` <span style="color:#9ca3af">(~ ${{diffDays}} dias atrás)</span>` : '';
       html += `
         <a href="${{item.url}}" class="search-result-item">
           <div class="search-result-title">${{item.title}}</div>
-          <div class="search-result-meta">Semana: ${{item.week}}</div>
+          <div class="search-result-meta">Semana: ${{item.week}}${{delta}}</div>
           <div class="search-result-snippet">${{snippet}}</div>
         </a>
       `;
@@ -640,9 +613,26 @@ SEARCH_SCRIPT_INDEX = """
 SEARCH_SCRIPT_LINKS = """
 <script>
 (function() {
+  // Calcula e exibe "X dias atrás" nas datas
+  document.querySelectorAll('.link-meta[data-date]').forEach(meta => {
+    const dateStr = meta.dataset.date;
+    if (!dateStr || dateStr === '0000-00-00') return;
+    const linkDate = new Date(dateStr);
+    const today = new Date();
+    const diffDays = Math.floor((today - linkDate) / (1000 * 60 * 60 * 24));
+    if (diffDays >= 0) {
+      const dateSpan = meta.querySelector('.link-date');
+      if (dateSpan && dateSpan.textContent) {
+        const span = document.createElement('span');
+        span.style.color = '#9ca3af';
+        span.textContent = ` (~ ${diffDays} dias atrás)`;
+        dateSpan.appendChild(span);
+      }
+    }
+  });
+
   const searchInput = document.getElementById('searchInput');
   const items = document.querySelectorAll('[data-searchable]');
-  const sections = document.querySelectorAll('.links-section');
   const statsEl = document.getElementById('searchStats');
   const noResults = document.getElementById('noResults');
 
@@ -659,12 +649,6 @@ SEARCH_SCRIPT_LINKS = """
       if (matches) visible++;
     });
 
-    // Esconde seções vazias
-    sections.forEach(section => {
-      const visibleItems = section.querySelectorAll('.link-item:not(.hidden)').length;
-      section.style.display = visibleItems === 0 ? 'none' : 'block';
-    });
-
     if (statsEl) {
       statsEl.textContent = query ? `${visible} resultado(s) para "${this.value}"` : `${items.length} links`;
     }
@@ -679,15 +663,21 @@ SEARCH_SCRIPT_LINKS = """
 """
 
 
-def extract_dates_from_filename(filename: str) -> tuple[str, str, str] | None:
-    """Extrai datas do nome do arquivo."""
+def extract_dates_from_filename(filename: str) -> tuple[str, str, str, str, str] | None:
+    """Extrai datas do nome do arquivo.
+
+    Returns:
+        Tuple com (start_display, end_display, slug, start_iso, end_iso) ou None
+    """
     pattern = r"resumo_semana_(\d{4})-(\d{2})-(\d{2})_(\d{4})-(\d{2})-(\d{2})\.md"
     match = re.match(pattern, filename)
     if match:
         start = f"{match.group(3)}/{match.group(2)}/{match.group(1)}"
         end = f"{match.group(6)}/{match.group(5)}/{match.group(4)}"
         slug = f"{match.group(4)}-{match.group(5)}-{match.group(6)}"
-        return start, end, slug
+        start_iso = f"{match.group(1)}-{match.group(2)}-{match.group(3)}"
+        end_iso = f"{match.group(4)}-{match.group(5)}-{match.group(6)}"
+        return start, end, slug, start_iso, end_iso
     return None
 
 
@@ -750,6 +740,39 @@ def clean_text_for_search(text: str) -> str:
     return text.strip()
 
 
+def get_week_stats(semanas_dir: Path, start_date: str, end_date: str) -> dict:
+    """Extrai estatísticas de uma semana.
+
+    Args:
+        semanas_dir: Diretório com arquivos semana_*.txt
+        start_date: Data início no formato YYYY-MM-DD
+        end_date: Data fim no formato YYYY-MM-DD
+
+    Returns:
+        dict com: messages, participants, links
+    """
+    filename = f"semana_{start_date}_{end_date}.txt"
+    filepath = semanas_dir / filename
+
+    if not filepath.exists():
+        return {'messages': 0, 'participants': 0, 'links': 0}
+
+    text = filepath.read_text(encoding='utf-8')
+
+    # Parse mensagens (formato WhatsApp BR e internacional)
+    pattern = r"(\d{2}/\d{2}/\d{4}) (\d{1,2}):(\d{2})(?:\s(?:da\s)?(madrugada|manhã|tarde|noite|meio-dia))? - ([^:]+): (.+)"
+    messages = re.findall(pattern, text)
+
+    authors = set(m[4].strip() for m in messages)
+    links = len(re.findall(r'https?://\S+', text))
+
+    return {
+        'messages': len(messages),
+        'participants': len(authors),
+        'links': links
+    }
+
+
 def get_month_name(month: str) -> str:
     """Retorna nome do mês em português."""
     months = {
@@ -767,7 +790,7 @@ def build_post(md_path: Path, output_dir: Path, base_url: str) -> dict | None:
         print(f"Aviso: Ignorando {md_path.name}", file=sys.stderr)
         return None
 
-    week_start, week_end, slug = dates
+    week_start, week_end, slug, start_iso, end_iso = dates
     content = md_path.read_text(encoding="utf-8")
 
     links = extract_links(content)
@@ -803,13 +826,35 @@ def build_post(md_path: Path, output_dir: Path, base_url: str) -> dict | None:
     </article>
     """
 
+    # Script para calcular delta de dias na página do post
+    post_script = """
+<script>
+(function() {
+  const weekEl = document.querySelector('.post-week');
+  if (!weekEl) return;
+  const text = weekEl.textContent;
+  const endMatch = text.match(/→\\s*(\\d{2})\\/(\\d{2})\\/(\\d{4})/);
+  if (endMatch) {
+    const endDate = new Date(`${endMatch[3]}-${endMatch[2]}-${endMatch[1]}`);
+    const diffDays = Math.floor((new Date() - endDate) / (1000*60*60*24));
+    if (diffDays >= 0) {
+      const span = document.createElement('span');
+      span.style.color = '#9ca3af';
+      span.textContent = ` (~ ${diffDays} dias atrás)`;
+      weekEl.appendChild(span);
+    }
+  }
+})();
+</script>
+"""
+
     page_html = BASE_TEMPLATE.format(
         title=title,
         description=excerpt,
         base_url=base_url,
         content=post_content,
         year=datetime.now().year,
-        scripts=""
+        scripts=post_script
     )
 
     output_path = output_dir / f"{slug}.html"
@@ -820,6 +865,8 @@ def build_post(md_path: Path, output_dir: Path, base_url: str) -> dict | None:
         "slug": slug,
         "week_start": week_start,
         "week_end": week_end,
+        "start_iso": start_iso,
+        "end_iso": end_iso,
         "excerpt": excerpt,
         "date": slug,
         "links": links,
@@ -842,28 +889,38 @@ def build_search_index(posts: list[dict], output_dir: Path, base_url: str) -> No
     index_path.write_text(json.dumps(index, ensure_ascii=False, indent=None), encoding="utf-8")
 
 
-def build_index(posts: list[dict], output_dir: Path, base_url: str) -> None:
+def build_index(posts: list[dict], output_dir: Path, base_url: str, semanas_dir: Path) -> None:
     """Gera a página índice."""
     posts = sorted(posts, key=lambda p: p["date"], reverse=True)
 
     cards_html = ""
-    for post in posts:
+    for idx, post in enumerate(posts):
         share_url = f"{base_url}{post['slug']}.html"
         title_js = post['title'].replace("'", "\\'")
         # Converte data DD/MM/YYYY para YYYY-MM-DD para JavaScript
         end_parts = post['week_end'].split('/')
         end_date_iso = f"{end_parts[2]}-{end_parts[1]}-{end_parts[0]}"
+        # Badge "NEW" apenas no card mais recente
+        badge_html = '<span class="badge-new">NEW</span>' if idx == 0 else ''
+        # Estatísticas da semana
+        stats = get_week_stats(semanas_dir, post['start_iso'], post['end_iso'])
         cards_html += f"""
         <div class="post-card">
+          {badge_html}
           <div class="post-card-header">
-            <span class="post-card-category">Resumo</span>
-            <span class="post-card-action" onclick="event.stopPropagation(); window.open('https://wa.me/?text=' + encodeURIComponent('{title_js} - ' + window.location.origin + '/{share_url}'), '_blank')">📤 Compartilhar</span>
+            <span class="post-card-category">Destaques da Semana</span>
+            <span class="post-card-action" onclick="event.stopPropagation(); window.open('https://wa.me/?text=' + encodeURIComponent('{title_js} - ' + window.location.origin + '/resumos_iaedu/{post['slug']}.html'), '_blank')"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 4px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp</span>
           </div>
           <a href="{base_url}{post['slug']}.html" style="text-decoration: none; color: inherit;">
-            <div class="post-card-image">🖼️ imagem gerada por IA</div>
             <h2 class="post-card-title">{post['title']}</h2>
             <p class="post-card-excerpt">{post['excerpt']}</p>
+            <div class="post-card-stats">
+              <span>💬 {stats['messages']} msgs</span>
+              <span>👥 {stats['participants']}</span>
+              <span>🔗 {stats['links']}</span>
+            </div>
           </a>
+          <hr class="post-card-divider">
           <div class="post-card-footer" data-end-date="{end_date_iso}">{post['week_start']} → {post['week_end']}</div>
         </div>
         """
@@ -955,53 +1012,62 @@ def build_links_page(
                 seen_urls.add(link["url"])
                 links_by_domain[link["domain"]].append(link)
 
-    sorted_domains = sorted(links_by_domain.items(), key=lambda x: -len(x[1]))
-    total_links = len(seen_urls)
+    # Flatten all links into a single list sorted by date (most recent first)
+    all_links = []
+    for domain, links in links_by_domain.items():
+        all_links.extend(links)
 
-    sections_html = ""
-    for domain, links in sorted_domains:
-        links_html = ""
-        for link in links:
-            title_safe = html.escape(link["title"])
-            title_js = html.escape(link["title"]).replace("'", "\\'").replace("(", "\\(").replace(")", "\\)")
-            # Escape special chars in URL for JavaScript
-            url_js = link["url"].replace("'", "\\'").replace("(", "%28").replace(")", "%29")
-            searchable = f"{link['title']} {link['domain']} {link['week']}"
-            links_html += f"""
-            <div class="link-item" data-searchable="{html.escape(searchable)}" onclick="window.open('{url_js}', '_blank')" style="cursor: pointer;">
-              <div class="link-header">
-                <span class="link-domain">{link['domain']}</span>
-                <span class="link-action" onclick="event.stopPropagation(); window.open('https://wa.me/?text=' + encodeURIComponent('{title_js} {url_js}'), '_blank')">📤 Compartilhar</span>
-              </div>
-              <div class="link-title">{title_safe}</div>
-              <div class="link-qr">📱 QR Code</div>
-              <div class="link-footer">
-                <span>Semana: {link['week']}</span>
-                <span style="color: var(--accent-blue);">↗ Abrir</span>
-              </div>
+    # Sort by week date (DD/MM/YYYY format) - most recent first
+    def parse_date(week_str):
+        try:
+            parts = week_str.split('/')
+            if len(parts) == 3:
+                return f"{parts[2]}-{parts[1]}-{parts[0]}"  # YYYY-MM-DD for sorting
+        except:
+            pass
+        return "0000-00-00"
+
+    all_links.sort(key=lambda x: parse_date(x.get('week', '')), reverse=True)
+    total_links = len(all_links)
+
+    # Build Hacker News style list
+    links_html = ""
+    for idx, link in enumerate(all_links, 1):
+        title_safe = html.escape(link["title"])
+        title_js = html.escape(link["title"]).replace("'", "\\'").replace("(", "\\(").replace(")", "\\)")
+        url_js = link["url"].replace("'", "\\'").replace("(", "%28").replace(")", "%29")
+        searchable = f"{link['title']} {link['domain']} {link.get('week', '')}"
+        week_display = link.get('week', '')
+        # Convert DD/MM/YYYY to ISO for JavaScript
+        date_iso = parse_date(week_display) if week_display else ''
+
+        links_html += f"""
+        <div class="link-item" data-searchable="{html.escape(searchable)}">
+          <span class="link-rank">{idx}.</span>
+          <div class="link-content">
+            <a href="{link['url']}" class="link-title" target="_blank" rel="noopener">{title_safe}</a>
+            <div class="link-meta"{f' data-date="{date_iso}"' if date_iso and date_iso != '0000-00-00' else ''}>
+              <span class="link-domain">({link['domain']})</span>
+              <span class="link-date">{f' | {week_display}' if week_display else ''}</span>
+              <span class="link-share" onclick="window.open('https://wa.me/?text=' + encodeURIComponent('{title_js} {url_js}'), '_blank')" title="Compartilhar via WhatsApp">| compartilhar</span>
             </div>
-            """
-
-        sections_html += f"""
-        <section class="links-section">
-          <h2 class="links-section-title">{domain} ({len(links)})</h2>
-          <div class="links-grid">
-            {links_html}
           </div>
-        </section>
+        </div>
         """
 
     links_content = f"""
     <header class="page-header">
       <h1 class="page-title">REPOSITÓRIO_DE_LINKS</h1>
-      <p class="page-subtitle">Todos os links compartilhados no grupo, organizados por fonte</p>
+      <p class="page-subtitle">Links compartilhados no grupo // ordenados por data</p>
     </header>
     <div class="search-container">
-      <input type="text" id="searchInput" class="search-input" placeholder="Filtrar links...">
+      <input type="text" id="searchInput" class="search-input" placeholder="Filtrar links... (título, domínio, data)">
       <div id="searchStats" class="search-stats"></div>
     </div>
-    <p class="links-count">{total_links} links únicos de {len(sorted_domains)} fontes</p>
-    {sections_html}
+    <p class="links-count">{total_links} links</p>
+    <div class="links-list">
+      {links_html}
+    </div>
     <div id="noResults" class="no-results">Nenhum link encontrado</div>
     """
 
@@ -1027,7 +1093,7 @@ def main() -> int:
     parser.add_argument(
         "--links-source",
         choices=["resumos", "full", "both"],
-        default="resumos",
+        default="full",
         help="Fonte dos links: resumos (extrai do markdown), full (usa JSON), both (combina ambos)",
     )
     parser.add_argument(
@@ -1062,7 +1128,8 @@ def main() -> int:
     build_search_index(posts, args.output_dir, args.base_url)
     print("Gerado: search-index.json")
 
-    build_index(posts, args.output_dir, args.base_url)
+    semanas_dir = args.input_dir.parent / "semanas"
+    build_index(posts, args.output_dir, args.base_url, semanas_dir)
     print("Gerado: index.html")
 
     total_links = build_links_page(
