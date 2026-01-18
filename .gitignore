@@ -9,9 +9,8 @@
 # Arquivos de conversa do WhatsApp (privacidade)
 *.zip
 
-# Resultados intermediários
-semanas/
-resumos/
+semana*.md
+resumo*.md
 
 # Testes
 teste_*.md
@@ -20,3 +19,6 @@ teste_*.md
 __pycache__/
 *.pyc
 .venv/
+
+.txt
+.zip
