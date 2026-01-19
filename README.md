@@ -13,6 +13,25 @@ Você exporta a conversa do WhatsApp, roda alguns comandos, e pronto: tem um sit
 
 ---
 
+## Uso com Claude Code
+
+Este projeto inclui uma **skill para Claude Code** que ensina o assistente a usar todas as ferramentas automaticamente.
+
+```bash
+# 1. Adicione o marketplace
+claude plugin marketplace add https://github.com/maluta/whatsapp_cli_tools
+
+# 2. Instale o plugin
+claude plugin install whatsapp-analyzer@whatsapp-tools
+```
+
+Depois de instalar, basta pedir ao Claude Code coisas como:
+- "Gere um resumo da semana de 06/01 a 12/01"
+- "Extraia os links da conversa"
+- "Publique o site com os resumos"
+
+---
+
 ## Requisitos
 
 - Python 3.11 ou superior
@@ -372,6 +391,6 @@ MIT - Use como quiser!
 
 ## Créditos
 
-Feito com muito café e IA por [seu nome aqui].
+Feito com muito café e IA por Tiago Maluta.
 
 Resumos gerados com LLMs (Gemini/Claude/GPT).

@@ -1,0 +1,23 @@
+{
+  "name": "whatsapp-tools",
+  "owner": {
+    "name": "Tiago Maluta",
+    "email": "seu-email@exemplo.com"
+  },
+  "metadata": {
+    "description": "WhatsApp conversation analysis toolkit - segment, summarize, extract stats and links, publish as HTML",
+    "version": "1.0.0",
+    "repository": "https://github.com/maluta/whatsapp_cli_tools"
+  },
+  "plugins": [
+    {
+      "name": "whatsapp-analyzer",
+      "description": "Analyze WhatsApp conversations: segment by date, generate AI summaries, extract statistics and links, publish as HTML sites",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/whatsapp-analyzer"
+      ]
+    }
+  ]
+}
